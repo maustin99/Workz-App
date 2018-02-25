@@ -11,7 +11,8 @@ class OrderSearch extends React.Component {
         super(props)
         this.state = {
           orders: [],
-          filterString: ''
+          filterString: '',
+          myFacility: ''
 
         }
     }
@@ -24,6 +25,12 @@ class OrderSearch extends React.Component {
       
        }
 
+       changeFacility(evt){
+            console.log('FACILITY CHANGE', document.getElementById("mySelect").value)
+            this.setState({
+                myFacility: document.getElementById("mySelect").value
+           })
+       }
        
 
     componentDidMount = () =>{
@@ -47,26 +54,26 @@ class OrderSearch extends React.Component {
     const myVenues = this.props.venues
     const { filterString } = this.state
     const allOrders = myOrders.filter((f)=>{
-            if (f.venue === 'Stub Hub Center') {
+            if ( (this.state.myFacility === "All Arenas" ) || (f.venue === this.state.myFacility) ) {
             var go = f.problem.toLowerCase().includes(filterString.toLowerCase()) 
             }
               return go
               })
-
+      
       return (
         <div className="OrderSearch">
           <h1>The Order Search Page</h1>
-            {/* console.log('VENUES: ', myVenues) */}
-            <select id="mySelect">
-                    <option selected="">Please Select Facility</option>
-                    <option>All Arenas</option>
+     
+            <select id="mySelect" onChange={this.changeFacility.bind(this)}>
+                    <option key="selected" selected="">Please Select Facility</option>
+                    <option key="all">All Arenas</option>
                     {myVenues.map((v, index)=>{
                         //console.log('print:', v.name)
-                       return <option >{v.name}</option>
+                       return <option key={index} >{v.name}</option>
                     })}
 
             </select>
-         
+
             <br/>
           <input  onChange={this.updateFilter.bind(this)} ref="searchInput" className="input is-large" type="text" placeholder="Filter All Orders" />
             <br/>

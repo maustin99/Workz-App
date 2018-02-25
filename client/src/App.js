@@ -91,7 +91,7 @@ updateDOM = () =>{
                 {/* CREATE Order*/}
                 <Route exact path="/api/orders-new/" render={(props)=> {
                   console.log('Order-Props:  ', props.match.params.id )
-                  return <OrderCreate history={props.history} updateDOM={this.updateDOM} />} }/>
+                  return <OrderCreate history={props.history} updateDOM={this.updateDOM} venues={this.state.venues} />} }/>
                 {/* EDIT Order*/}
                 <Route exact path="/api/orders-edit/:id" render={(props)=> {
                   console.log('Order-Edit-Props:  ', props.match.params.id )

@@ -27,7 +27,7 @@ class OrderCreate extends React.Component {
                 
                 problem: this.refs.problem.value,
                 order_id: this.refs.order_id.value,
-                venue: this.refs.venue.value,
+                venue: document.getElementById("mySelect").value,
                 location: this.refs.location.value,
                 level: this.refs.level.value,
                 section: this.refs.section.value,
@@ -55,7 +55,7 @@ class OrderCreate extends React.Component {
 
     render() {
 
-   
+        const myVenues = this.props.venues
 
 
       return (
@@ -65,7 +65,16 @@ class OrderCreate extends React.Component {
           <form onSubmit={this.addOrder.bind(this)}>
             <input type="text" ref="problem" placeholder="Order Problem" /><br/>
             <input type="text" ref="order_id" placeholder="Order ID Number" /><br/>
-            <input type="text" ref="venue" placeholder="Venue Name" /><br/>
+
+            {/* <input type="text" ref="venue" placeholder="Venue Name" /><br/> */}
+            <select id="mySelect" >
+                    <option key="selected" selected="">Please Select Facility</option>
+                    {myVenues.map((v, index)=>{
+                        //console.log('print:', v.name)
+                       return <option key={index} >{v.name}</option>
+                    })}
+            </select>
+            <br/>
             <input type="text" ref="location" placeholder="Problem Location" /><br/>
             <input type="text" ref="level" placeholder="Level" /><br/>
             <input type="text" ref="section" placeholder="Section" /><br/>
