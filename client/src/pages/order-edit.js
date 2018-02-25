@@ -41,6 +41,9 @@ class OrderEdit extends React.Component {
         console.log('current order: ', this.state.order)
         })
         
+        
+        //console.log('stuff', document.getElementById("mySelect").options.namedItem("Staples Center").selected=true )
+        //document.getElementById("mySelect").options.namedItem(this.props.venues.name).selected=true
 
     }// end DidMount
 
@@ -57,6 +60,7 @@ class OrderEdit extends React.Component {
                 
             }) //end AXIOS
 
+            
     }
 
 
@@ -65,10 +69,11 @@ class OrderEdit extends React.Component {
     render() {
   
         const currentOrder = this.state.order
+        const myVenues = this.props.venues
 
 
-        
-        
+        //document.getElementById("mySelect").value = currentOrder.venue
+        //console.log('NEW' , currentOrder.venue)
        
 
         
@@ -82,7 +87,19 @@ class OrderEdit extends React.Component {
           <form onChange={this.handleFormChange.bind(this)} onSubmit={this.updateOrder.bind(this)}>
           <input type="text" name="problem" ref="problem" placeholder="Order Problem" value={currentOrder && currentOrder.problem} /><br/>
           <input type="text" name="order_id" ref="order_id" placeholder="Order ID Number" value={currentOrder && currentOrder.order_id} /><br/>
-          <input type="text" name="venue" ref="venue" placeholder="Venue Name" value={currentOrder && currentOrder.venue} /><br/>
+          {/* <input type="text" name="venue" ref="venue" placeholder="Venue Name" value={currentOrder && currentOrder.venue} /><br/> */}
+          <select id="mySelect" >
+                    <option key="selected" selected="">Please Select Facility</option>
+                    {myVenues.map((v, index)=>{
+                        if (currentOrder.venue === v.name){ 
+                            return <option name="venue" id={v.name} key={index}  selected >{v.name}</option>
+                        }else{
+                            return <option name="venue" id={v.name} key={index}  >{v.name}</option>
+                        } 
+                        
+                    })}
+            </select>
+            <br/>
           <input type="text" name="location" ref="location" placeholder="Problem Location" value={currentOrder && currentOrder.location} /><br/>
           <input type="text" name="level" ref="level" placeholder="Level" value={currentOrder && currentOrder.level} /><br/>
           <input type="text" name="section" ref="section" placeholder="Section" value={currentOrder && currentOrder.section} /><br/>

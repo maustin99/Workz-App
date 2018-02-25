@@ -95,7 +95,7 @@ updateDOM = () =>{
                 {/* EDIT Order*/}
                 <Route exact path="/api/orders-edit/:id" render={(props)=> {
                   console.log('Order-Edit-Props:  ', props.match.params.id )
-                  return <OrderEdit keyID={props.match.params.id} history={props.history} updateDOM={this.updateDOM} />} }/>
+                  return <OrderEdit keyID={props.match.params.id} history={props.history} updateDOM={this.updateDOM} venues={this.state.venues} />} }/>
               {/* SEARCH Orders*/}
                 <Route exact path="/api/orders-search" render={(props)=> {
                   console.log('Order-Search-Props:  ', props.match.params.id )
