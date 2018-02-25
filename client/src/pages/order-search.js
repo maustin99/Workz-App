@@ -56,17 +56,21 @@ class OrderSearch extends React.Component {
       return (
         <div className="OrderSearch">
           <h1>The Order Search Page</h1>
-            {console.log('VENUES: ', myVenues)}
-            
-          <select id="mySelect">
-            {myVenues.map((v, index)=>{
-                <option keyID={index}>{v.name}</option>
-            })}
-            </select>
+            {/* console.log('VENUES: ', myVenues) */}
+            <select id="mySelect">
+                    <option selected="">Please Select Facility</option>
+                    <option>All Arenas</option>
+                    {myVenues.map((v, index)=>{
+                        //console.log('print:', v.name)
+                       return <option >{v.name}</option>
+                    })}
 
+            </select>
+         
             <br/>
           <input  onChange={this.updateFilter.bind(this)} ref="searchInput" className="input is-large" type="text" placeholder="Filter All Orders" />
-  
+            <br/>
+          
           <ul className="order-list">
         
                 {  allOrders.map((b, index)=>{       
