@@ -13,6 +13,7 @@ import Orders from './pages/orders.js';
 import Order from './pages/order.js';
 import OrderCreate from './pages/order-create.js';
 import OrderEdit from './pages/order-edit.js';
+import OrderSearch from './pages/order-search.js';
   
 
 
@@ -95,7 +96,10 @@ updateDOM = () =>{
                 <Route exact path="/api/orders-edit/:id" render={(props)=> {
                   console.log('Order-Edit-Props:  ', props.match.params.id )
                   return <OrderEdit keyID={props.match.params.id} history={props.history} updateDOM={this.updateDOM} />} }/>
-
+              {/* SEARCH Orders*/}
+                <Route exact path="/api/orders-search" render={(props)=> {
+                  console.log('Order-Search-Props:  ', props.match.params.id )
+                  return <OrderSearch keyID={props.match.params.id} history={props.history} updateDOM={this.updateDOM} venues={this.state.venues} />} }/>
 
 
       </div>
