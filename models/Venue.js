@@ -18,7 +18,9 @@ venueSchema = new mongoose.Schema({
     ven_levels: {type: String},
     ven_sections: {type: String},
     ven_departments: {type: String},
-    website: {type: String}
+    website: {type: String},
+    vlocationX: {type: String},
+    vlocationY: {type: String},
    
 
 })

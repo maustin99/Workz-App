@@ -63,6 +63,18 @@ class OrderEdit extends React.Component {
             
     }
 
+    updateTheVenue(evt){
+        evt.preventDefault()
+        //console.log('EVT' , evt.target.value)
+        this.setState({
+            order: {
+                ...this.state.order,
+                venue: evt.target.value
+            }
+        })
+
+        
+    }
 
 
 
@@ -88,8 +100,8 @@ class OrderEdit extends React.Component {
           <input type="text" name="problem" ref="problem" placeholder="Order Problem" value={currentOrder && currentOrder.problem} /><br/>
           <input type="text" name="order_id" ref="order_id" placeholder="Order ID Number" value={currentOrder && currentOrder.order_id} /><br/>
           {/* <input type="text" name="venue" ref="venue" placeholder="Venue Name" value={currentOrder && currentOrder.venue} /><br/> */}
-          <select id="mySelect" >
-                    <option key="selected" selected="">Please Select Facility</option>
+          <select id="mySelect" onChange={this.updateTheVenue.bind(this)} >
+                    <option  key="selected" selected="">Please Select Facility</option>
                     {myVenues.map((v, index)=>{
                         if (currentOrder.venue === v.name){ 
                             return <option name="venue" id={v.name} key={index}  selected >{v.name}</option>

@@ -2,10 +2,28 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+/*global google*/
+
+
+const ARC_DE_TRIOMPHE_POSITION = {
+  lat: 48.873947,
+  lng: 2.295038
+};
+
+const EIFFEL_TOWER_POSITION = {
+  lat: 34.0430245,
+  lng: -118.2674181
+};
 
 
 
 class Order extends React.Component {
+  
+  constructor() {
+    super();
+    this.panToArcDe
+   
+  }
 
     state = {
         order: {},
@@ -15,6 +33,7 @@ class Order extends React.Component {
 
 
     componentDidMount = () => {
+     
 
         axios({method: 'get', url: `/api/orders/${this.props.orderId}`})
             .then((res) => { this.setState({
@@ -22,7 +41,19 @@ class Order extends React.Component {
             })
                 }) //end AXIOS
 
+
+
+                this.map = new google.maps.Map(this.refs.map, {
+                  center: EIFFEL_TOWER_POSITION,
+                  zoom: 16
+                });
     }// end DidMount
+
+    panToArcDeTriomphe(evt) {
+      console.log(this)
+     
+      this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
+    }
 
 
     deleteThisOrder(evt){
@@ -44,10 +75,16 @@ class Order extends React.Component {
 
 
 
+
     render() {
 
-   
-  
+       const mapStyle = {
+      width: 500,
+      height: 300,
+      border: '1px solid black'
+    };
+      
+    
 
 
       return (
@@ -66,6 +103,12 @@ class Order extends React.Component {
 
             <br/>
             <br/>
+
+            <h3>My Google Maps Demo</h3>
+            <button onClick={this.panToArcDeTriomphe.bind(this)}>Go to Arc De Triomphe</button>
+            <div ref="map" style={mapStyle}>I should be a map!</div>
+            <br/>
+            <br/>
             <Link to={`/api/orders/`}>See All Orders</Link>
            <br/>
            <br/>
@@ -79,6 +122,7 @@ class Order extends React.Component {
                 <Redirect to={ '/api/orders/' }  />
         )}
 
+            
         </div>
       );
     }
