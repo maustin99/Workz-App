@@ -4,33 +4,18 @@ import {Link} from 'react-router-dom'
 import axios from 'axios'
 import staplesCenter from './Staples-Center-seating.jpg'
 import mapPin from './images/map_marker.png'
-/*global google*/
-
-const ARC_DE_TRIOMPHE_POSITION = {
-  lat: 48.873947,
-  lng: 2.295038
-};
-
-const MAIN_POSITION = {
-  lat: 34.0430245,
-  lng: -118.2674181
-};
 
 
+let myVenueURL = ""
 
 class Order extends React.Component {
-  
-  constructor() {
-    super();
-    this.panToArcDe
-  
-    };
-
+    
   
 
     state = {
         order: {},
         fireRedirect: false,
+        venues: [],
 
          divStyle: {
           //backgroundColor:  'rgba(255, 153, 0, .65)', 
@@ -44,6 +29,7 @@ class Order extends React.Component {
 
     componentDidMount = () => {
      
+      
 
         axios({method: 'get', url: `/api/orders/${this.props.orderId}`})
             .then((res) => {
@@ -53,25 +39,37 @@ class Order extends React.Component {
                 order: res.data,
                   divStyle: { ...this.state.divStyle , 
                   visibility: 'visible',
-                    top: res.data.locationY-65,
+                    top: res.data.locationY-52,
                     left: res.data.locationX-50
                 }
               })
             }) //end AXIOS
 
 
+            axios({method: 'get', url: '/api/venues'})
+            .then((res) => { this.setState({
+              venues: res.data
+            }, ()=>{
+              this.state.venues.map((v, index)=>{
+                //console.log('V:::', v.name)
+                if ( this.state.order.venue === v.name){
+                  myVenueURL = v.facilityPlanURL
+                  console.log('venue URL::::', myVenueURL)
+                return (v.facilityPlanURL)
+                }
+          })
+            })
+            console.log('LOADING axios VENUES:  ', this.state.venues )
+          })//end axio venue call
+          
+          
+          
 
-                this.map = new google.maps.Map(this.refs.map, {
-                  center: MAIN_POSITION,
-                  zoom: 18
-                });
+
+               
       }// end DidMount
 
-    panToArcDeTriomphe(evt) {
-      console.log(this)
-     
-      this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
-    }
+   
 
 
     deleteThisOrder(evt){
@@ -107,7 +105,7 @@ class Order extends React.Component {
     this.setState({
         divStyle: { ...this.state.divStyle , 
         visibility: 'visible',
-          top: event.offsetY-65,
+          top: event.offsetY-52,
           left: event.offsetX-49
        }
     }) //end SET
@@ -126,24 +124,15 @@ class Order extends React.Component {
 
     render() {
 
-      const mapStyle = {
-        width: 500,
-        height: 300,
-        border: '1px solid black'
-      };
-  
-
-
-
       
-
+  
 
 
 
       return (
         <div className="Order">
 
-
+          
           <h1>The Show Order Page</h1>
   
            <h1>{this.state.order.problem}</h1>
@@ -161,7 +150,7 @@ class Order extends React.Component {
 
             <div id="imageWrapper">
                 <div id="facilityImage">
-                      <img id="image" onClick={this.handleImageClick.bind(this)} src={staplesCenter} /> <br/> 
+                      <img id="image" onClick={this.handleImageClick.bind(this)} src={myVenueURL && myVenueURL} /> <br/> 
                 </div>  
                       <div id="topImage"  style={this.state.divStyle}>
                       <img src={mapPin}  />
@@ -170,15 +159,13 @@ class Order extends React.Component {
 
               <br/>
               <br/>
-
-            <h3>My Google Maps Demo</h3>
-             <button onClick={this.panToArcDeTriomphe.bind(this)} >Go to Arc De Triomphe</button> 
-            <div ref="map" style={mapStyle}>I should be a map!</div>
-            <br/>
             <br/>
             <Link to={`/api/orders/`}>See All Orders</Link>
            <br/>
            <br/>
+          <Link to={`/api/orders-search/`}>Return to Orders Search Page</Link>
+          <br/>
+           <br/> 
           <Link to={`/api/orders-edit/${this.state.order._id}`}>Edit the Order</Link> 
            <br/>
            <br/>
@@ -191,7 +178,10 @@ class Order extends React.Component {
         )}
 
            
-              
+<br/>
+        
+        
+        
 
             
         </div>

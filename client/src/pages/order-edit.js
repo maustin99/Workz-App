@@ -55,7 +55,7 @@ class OrderEdit extends React.Component {
 
             axios({method: 'patch', url: `/api/orders/${this.props.keyID}`, data: this.state.order 
         }).then((res) => {
-                this.props.history.push("/api/orders")
+                this.props.history.push(`/api/orders/${this.props.keyID}`)
                 this.props.updateDOM()
                 
             }) //end AXIOS
@@ -65,14 +65,16 @@ class OrderEdit extends React.Component {
 
     updateTheVenue(evt){
         evt.preventDefault()
-        //console.log('EVT' , evt.target.value)
+        console.log('EVT::' , evt.target.value)
         this.setState({
             order: {
                 ...this.state.order,
                 venue: evt.target.value
             }
+        }, ()=>{
+            console.log('this.state.order::' , this.state.order)
         })
-
+       
         
     }
 
@@ -104,9 +106,9 @@ class OrderEdit extends React.Component {
                     <option  key="selected" selected="">Please Select Facility</option>
                     {myVenues.map((v, index)=>{
                         if (currentOrder.venue === v.name){ 
-                            return <option name="venue" id={v.name} key={index}  selected >{v.name}</option>
+                            return <option name="venue" id={v.name} keyID={index}  selected >{v.name}</option>
                         }else{
-                            return <option name="venue" id={v.name} key={index}  >{v.name}</option>
+                            return <option name="venue" id={v.name} keyID={index}  >{v.name}</option>
                         } 
                         
                     })}

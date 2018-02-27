@@ -32,7 +32,8 @@ class VenueCreate extends React.Component {
                 country: this.refs.country.value,
                 phoneNumber: this.refs.phoneNumber.value,
                 pictureURL: this.refs.pictureURL.value,
-                pictureLOGO: this.refs.pictureLOGO.value
+                pictureLOGO: this.refs.pictureLOGO.value,
+                facilityPlanURL: this.refs.facilityPlanURL.value
 
             } //end data
         }).then((res) => {
@@ -69,6 +70,7 @@ class VenueCreate extends React.Component {
             <input type="text" ref="phoneNumber" placeholder="Main Phone Number" /><br/>
             <input type="text" ref="pictureURL" placeholder="Venure Picture URL" /><br/>
             <input type="text" ref="pictureLOGO" placeholder="Venue Logo URL" /><br/>
+            <input type="text" ref="facilityPlanURL" placeholder="Facility Floorplan URL" /><br/>
             <button>Submit Venue</button>
         </form>
 

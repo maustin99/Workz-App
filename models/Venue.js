@@ -21,6 +21,7 @@ venueSchema = new mongoose.Schema({
     website: {type: String},
     vlocationX: {type: String},
     vlocationY: {type: String},
+    facilityPlanURL: {type: String}
    
 
 })

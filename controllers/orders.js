@@ -36,6 +36,7 @@ const
     
         // update an existing Order
         update: (req, res) => {
+            console.log('req.body::::' , req.body)
             Order.findById(req.params.id, (err, order) => {
                 Object.assign(order, req.body)   //merges objects  together
                 order.save((err, updatedOrder) => {

@@ -2,10 +2,27 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
+/*global google*/
 
+const ARC_DE_TRIOMPHE_POSITION = {
+  lat: 48.873947,
+  lng: 2.295038
+};
+
+const MAIN_POSITION = {
+  lat: 34.0430245,
+  lng: -118.2674181
+};
 
 
 class Venue extends React.Component {
+
+  constructor() {
+    super();
+    this.panToArcDe
+  
+    };
+
 
     state = {
         venue: {},
@@ -22,8 +39,17 @@ class Venue extends React.Component {
             })
                 }) //end AXIOS
 
+            this.map = new google.maps.Map(this.refs.map, {
+              center: MAIN_POSITION,
+              zoom: 18
+            });
     }// end DidMount
 
+    panToArcDeTriomphe(evt) {
+      console.log(this)
+     
+      this.map.panTo(ARC_DE_TRIOMPHE_POSITION);
+    }
 
     deleteThisVenue(evt){
         evt.preventDefault()
@@ -42,6 +68,12 @@ class Venue extends React.Component {
 
 
     render() {
+
+      const mapStyle = {
+        width: 500,
+        height: 300,
+        border: '1px solid black'
+      };
 
    
     console.log('Venue - Props:', this.props)
@@ -66,6 +98,14 @@ class Venue extends React.Component {
         {this.state.fireRedirect && ( 
                 <Redirect to={ '/api/venues/' }  />
         )}
+
+            <br/>
+
+            <h3>My Google Maps Demo</h3>
+            <button onClick={this.panToArcDeTriomphe.bind(this)} >Go to Arc De Triomphe</button> 
+            <div ref="map" style={mapStyle}>I should be a map!</div>
+            <br/>
+
 
         </div>
       );
