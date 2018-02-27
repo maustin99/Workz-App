@@ -16,6 +16,9 @@ import OrderCreate from './pages/order-create.js';
 import OrderEdit from './pages/order-edit.js';
 import OrderSearch from './pages/order-search.js';
   
+import User from './pages/user.js';
+import UserEdit from './pages/user-edit.js';
+
 import clientAuth from './pages/clientAuth'
 import LogIn from './pages/views/LogIn'
 import LogOut from './pages/views/LogOut'
@@ -77,16 +80,16 @@ logOut() {
           <h1 className="App-title">Welcome to React</h1>
 
 
-          <Route path="/login" render={(props) => {
+          <Route exact path="/login" render={(props) => {
 						return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
 
-					<Route path="/logout" render={(props) => {
+					<Route exact path="/logout" render={(props) => {
 						return <LogOut onLogOut={this.logOut.bind(this)} />
 					}} />
 
 					{/* the sign up component takes an 'onSignUpSuccess' prop which will perform the same thing as onLoginSuccess: set the state to contain the currentUser */}
-					<Route path="/signup" render={(props) => {
+					<Route exact path="/signup" render={(props) => {
 						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
 					}} />
 
@@ -132,8 +135,18 @@ logOut() {
                   console.log('Order-Search-Props:  ', props.match.params.id )
                   return <OrderSearch keyID={props.match.params.id} history={props.history} updateDOM={this.updateDOM} venues={this.state.venues} />} }/>
 
+                  {/* ----=====  USERS =====----- */}
+
+                  <Route exact path="/api/user/:id" render={(props)=> {
+                  console.log('User-Props:  ', props.match, ' User: ' , currentUser, 'ID:', currentUser._id)
+                  return <User myProps={props.match} user={currentUser} updateDOM={this.updateDOM} />} }/>  
+                  {/* EDIT User*/}
+                  <Route exact path="/api/user-edit/:id" render={(props)=> {
+                  console.log('User-Edit-Props:  ', props.match, ' User: ' , currentUser, 'ID:', currentUser._id)
+                  return <UserEdit myProps={props.match} user={currentUser} updateDOM={this.updateDOM} />} }/>  
+
               {/* HOME SPLASH SCREEN */}
-                <Route path="/" component={Home} />
+                <Route exact path="/" component={Home} />
       </div>
     );
   }
