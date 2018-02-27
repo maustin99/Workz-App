@@ -5,6 +5,7 @@ import axios from 'axios'
 //import jwtDecode from 'jwt-decode'
 import { Route, NavLink } from 'react-router-dom'
 
+import NavBar from './pages/NavBar'
 import Venues from './pages/venues.js';
 import Venue from './pages/venue.js';
 import VenueCreate from './pages/venue-create.js';
@@ -15,11 +16,17 @@ import OrderCreate from './pages/order-create.js';
 import OrderEdit from './pages/order-edit.js';
 import OrderSearch from './pages/order-search.js';
   
-
+import clientAuth from './pages/clientAuth'
+import LogIn from './pages/views/LogIn'
+import LogOut from './pages/views/LogOut'
+import SignUp from './pages/views/SignUp'
+import Home from './pages/views/Home'
 
 class App extends Component {
   state = {
-      venues: []
+      venues: [],
+
+      currentUser: clientAuth.getCurrentUser()
     
   }
 
@@ -44,11 +51,20 @@ updateDOM = () =>{
 }
 
 
+onLoginSuccess(user) {
+  this.setState({ currentUser: clientAuth.getCurrentUser() })
+}
+
+logOut() {
+  clientAuth.logOut()
+  this.setState({ currentUser: null })
+}
+
 
 
   render() {
    
-
+    const { currentUser } = this.state
 
     
 
@@ -56,9 +72,24 @@ updateDOM = () =>{
     return (
       <div className="App">
        
+          <NavBar currentUser={currentUser} />
+
           <h1 className="App-title">Welcome to React</h1>
 
-           
+
+          <Route path="/login" render={(props) => {
+						return <LogIn {...props} onLoginSuccess={this.onLoginSuccess.bind(this)} />
+					}} />
+
+					<Route path="/logout" render={(props) => {
+						return <LogOut onLogOut={this.logOut.bind(this)} />
+					}} />
+
+					{/* the sign up component takes an 'onSignUpSuccess' prop which will perform the same thing as onLoginSuccess: set the state to contain the currentUser */}
+					<Route path="/signup" render={(props) => {
+						return <SignUp {...props} onSignUpSuccess={this.onLoginSuccess.bind(this)} />
+					}} />
+
          
 
           <Route exact path="/api/venues" render={(props)=> {
@@ -101,7 +132,8 @@ updateDOM = () =>{
                   console.log('Order-Search-Props:  ', props.match.params.id )
                   return <OrderSearch keyID={props.match.params.id} history={props.history} updateDOM={this.updateDOM} venues={this.state.venues} />} }/>
 
-
+              {/* HOME SPLASH SCREEN */}
+                <Route path="/" component={Home} />
       </div>
     );
   }
