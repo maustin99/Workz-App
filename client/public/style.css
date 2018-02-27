@@ -1,0 +1,57 @@
+
+
+
+body{
+
+    
+
+}
+
+
+
+#imageWrapper{
+
+    
+}
+
+#facilityImage{
+
+
+    
+    position: absolute;
+    display: block;
+
+    margin: 0px;
+    padding: 0px;
+}
+
+#facilityImage img{
+
+    width:1000px;
+}
+
+/*ALSO USING INLINE STYLE ADJUSTMENTS */
+#topImage{
+
+    /* background-color: rgba(255, 153, 0, .65); */
+    
+    width:100px;
+    height:100px;
+    
+    
+    background-image: url("./images/map_marker.png");
+    
+    z-index: 3;
+    position: relative;
+
+        margin: 0px;
+        padding: 0px;
+
+
+}
+
+#topImage img{
+
+    width:50px;
+
+}
