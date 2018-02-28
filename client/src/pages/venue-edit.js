@@ -40,6 +40,7 @@ class VenueEdit extends React.Component {
                 address: this.refs.address.value,
                 city: this.refs.city.value,
                 state: this.refs.state.value,
+                zip: this.refs.zip.value,
                 country: this.refs.country.value,
                 vlocationX: this.refs.vlocationX.value,
                 vlocationY: this.refs.vlocationY.value,
@@ -83,6 +84,7 @@ class VenueEdit extends React.Component {
             <input type="text" ref="city" placeholder="City"  defaultValue={currentVenue && currentVenue.city}  /><br/>
             <input type="text" ref="state" placeholder="State"  defaultValue={currentVenue && currentVenue.state}  /><br/>
             <input type="text" ref="country" placeholder="Country"  defaultValue={currentVenue && currentVenue.country} /><br/>
+            <input type="text" ref="zip" placeholder="Zip Code"  defaultValue={currentVenue && currentVenue.zip} /><br/>
             <input type="text" ref="vlocationX" placeholder="Map Location - Latitude" defaultValue={currentVenue && currentVenue.vlocationX} /><br/>
             <input type="text" ref="vlocationY" placeholder="Map Location - Longitude" defaultValue={currentVenue && currentVenue.vlocationY} /><br/>
             <input type="text" ref="phoneNumber" placeholder="Main Phone Number"  defaultValue={currentVenue && currentVenue.phoneNumber} /><br/>

@@ -30,7 +30,7 @@ class VenueCreate extends React.Component {
                 address: this.refs.address.value,
                 city: this.refs.city.value,
                 state: this.refs.state.value,
-                zip: this.refs.state.value,
+                zip: this.refs.zip.value,
                 country: this.refs.country.value,
                 vlocationX: this.refs.vlocationX.value,
                 vlocationY: this.refs.vlocationY.value,
