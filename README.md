@@ -34,3 +34,5 @@ Administrative access versus employeee access<br/>
 Acurat searching function<br/>
 Unique order number generation<br/>
 Printable receipts and invoices<br/>
+
+<h2>You may view the ORDRZ App <a href="https://ordrz.herokuapp.com">here</a></h2>
