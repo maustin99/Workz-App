@@ -8,7 +8,7 @@ ORDRZ&trade; take day-to-day facilities management to the next level. Using our 
 
 Enter your facility name and pertinent information into the ORDRZ&trade; App. Also include a visual layout of the facility. Using our pin-point feature, precisely mark the location of the concern. Department team members with access will be able to see the problem's location, and resolve the concern. All relavant team members and department heads can keep up with the progress of the open ORDRZ work-order. Notes, comments, and even photos can be attached to the work-order to provide the most information neccessary on the concern.
 
-<h3>Development & Technologies -  ORDRZ&trade; is created in the REACT framework. Node.js, MONGO-DB, Javascript, HTML, & CSS</h3>
+<h3>Development & Technologies -  ORDRZ&trade; is created in the REACT framework. Node.js, Express, MONGO-DB, Javascript, HTML, & CSS. The Google Maps API for REACT was also implemented.</h3>
 <h2>User Stories</h2>
 
 As a User I want to easily create a Work Order<br/>
