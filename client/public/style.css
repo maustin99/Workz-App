@@ -378,6 +378,11 @@ h3{
       )
 }
 /* ------- VENUES CREATE -------- */
+.VenueCreate h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
 #venuesCreateSmallContainer{
     border: 1px solid cyan;
     width:50%;
@@ -428,22 +433,25 @@ h3{
     margin-right:auto;
     z-index: 3;
     border: 1px solid cyan;
-     visibility: visible; */
-}
+     visibility: visible;} */
+
 
 /* ------------------------------------ */
 /* ------------------------------------ */
 /*-----------USER SHOW -------------*/
-.User h1{
+
+#userHeader{
     font-family: 'robotolight', 'arial' ;
     text-transform: uppercase;
     font-size: 20pt;
+    
 }
 #userSmallContainer{
     border: 1px solid cyan;
     width:50%;
     margin-left: auto;
     margin-right: auto;
+    margin-top:-18px;
 
     background: linear-gradient(
         rgba(0, 0, 0, 0.7), 
@@ -458,6 +466,20 @@ h3{
     padding:0px;
 } 
 /* ---------- USER EDIT ------------*/
+#userEditSmallContainer{
+    border: 1px solid cyan;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+   
+}
+#userEditSmallContainer p{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+    margin:0 0 15px 0;
+    padding:0px;
+}
 .UserEdit h1{
     font-family: 'robotolight', 'arial' ;
     text-transform: uppercase;
@@ -473,7 +495,38 @@ h3{
 }
 
 
-
+/* ------- MAP -------- */
 .Map, .Map div {
     min-height: 400px;
+}
+
+
+/* ------- LOGIN -------- */
+.LogIn h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+.LogIn button{
+    font-size: 12pt;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.LogIn button:hover{
+    background: #ffbd44;
+}
+
+/* ------- SIGN-UP -------- */
+.SignUp h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+.SignUp button{
+    font-size: 12pt;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.SignUp button:hover{
+    background: #ffbd44;
 }

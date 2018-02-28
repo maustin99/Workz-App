@@ -63,7 +63,7 @@ class UserEdit extends React.Component {
   
             
             <h1>Profile Edit</h1>
-                <div id="userSmallContainer">
+                <div id="userEditSmallContainer">
                         <form onChange={this.handleFormChange.bind(this)} onSubmit={this.updateUser.bind(this)}>
                     <input type="text" name="name" ref="problem" placeholder="Name" value={this.state.user.name} /><br/>
                     <input type="text" name="email" ref="email" placeholder="Email" value={this.state.user.email} /><br/>

@@ -51,9 +51,8 @@ class User extends React.Component {
 
         return (
           <div className="User">
-  
-            
-            <h1>{this.state.user.name}'s Profile</h1>
+
+            <h1 id="userHeader" >{this.state.user.name}&#8217;s Profile</h1>
               <img src={this.state.user.user_imageURL} />
               <div id="userSmallContainer">
                     <h3>{this.state.user.name}</h3>
