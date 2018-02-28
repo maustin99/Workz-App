@@ -63,6 +63,11 @@ logOut() {
   this.setState({ currentUser: null })
 }
 
+updateCurrentUser(updatedUser) {
+  this.setState({
+    currentUser: updatedUser
+  })
+}
 
 
   render() {
@@ -77,7 +82,7 @@ logOut() {
        
           <NavBar currentUser={currentUser} />
 
-          <h1 className="App-title">Welcome to React</h1>
+          {/* <h1 className="App-title">Welcome to React</h1> */}
 
 
           <Route exact path="/login" render={(props) => {
@@ -143,7 +148,7 @@ logOut() {
                   {/* EDIT User*/}
                   <Route exact path="/api/user-edit/:id" render={(props)=> {
                   console.log('User-Edit-Props:  ', props.match, ' User: ' , currentUser, 'ID:', currentUser._id)
-                  return <UserEdit myProps={props.match} user={currentUser} updateDOM={this.updateDOM} />} }/>  
+                  return <UserEdit myProps={props.match} user={currentUser} history={props.history} updateDOM={this.updateDOM} onUserUpdate={this.updateCurrentUser.bind(this)} />} }/>  
 
               {/* HOME SPLASH SCREEN */}
                 <Route exact path="/" component={Home} />

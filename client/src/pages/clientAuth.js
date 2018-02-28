@@ -68,6 +68,15 @@ function updateTodo(id, fields) {
 	return clientAuth({ method: 'patch', url: `/api/todos/${id}`, data: fields })
 }
 
+function updateUser(id, fields) {
+	return clientAuth({method: 'patch', url: `/api/users/${id}`, data: fields }).then(res => {
+		if(res.data.success) {
+			clientAuth.defaults.headers.common.token = setToken(res.data.token)
+		}
+		return res.data.user
+	})
+}
+
 
 export default {
 	getCurrentUser,
@@ -76,5 +85,6 @@ export default {
 	logOut,
 	getTodos,
 	createTodo,
-	updateTodo
+	updateTodo,
+	updateUser
 }

@@ -21,10 +21,16 @@ class User extends React.Component {
 
     componentDidMount = () => {
      
-      this.setState({
-        user: this.props.user
-        
-      })
+
+      axios({method: 'get', url: `/api/users/${this.props.user._id}`  
+    }).then((res) => { this.setState({
+      user: res.data
+       })   
+       console.log('Check user Data:::', this.state.user)
+        }
+      
+      ) //end AXIOS
+
 
 
       console.log('Current User-client side::', this.state.user)
@@ -48,16 +54,16 @@ class User extends React.Component {
   
             
             <h1>The USER SHOW Page</h1>
-              <img src={this.props.user.user_imageURL} />
-              <h3>{this.props.user.name}</h3>
-              <h3>{this.props.user.email}</h3>
+              <img src={this.state.user.user_imageURL} />
+              <h3>{this.state.user.name}</h3>
+              <h3>{this.state.user.email}</h3>
               <br/>
-              <h3>{this.props.user.user_PhNumber}</h3>
-              <h3>{this.props.user.user_department}</h3>
-              <h3>{this.props.user.user_division}</h3>
-              <h3>{this.props.user.user_divisionPhone}</h3>
+              <h3>{this.state.user.user_PhNumber}</h3>
+              <h3>{this.state.user.user_department}</h3>
+              <h3>{this.state.user.user_division}</h3>
+              <h3>{this.state.user.user_divisionPhone}</h3>
               <br/>
-              <h3>{this.props.user.user_supervisor}</h3>
+              <h3>{this.state.user.user_supervisor}</h3>
               
               <br/>
               <br/> 

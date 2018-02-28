@@ -102,13 +102,13 @@ class OrderEdit extends React.Component {
           <input type="text" name="problem" ref="problem" placeholder="Order Problem" value={currentOrder && currentOrder.problem} /><br/>
           <input type="text" name="order_id" ref="order_id" placeholder="Order ID Number" value={currentOrder && currentOrder.order_id} /><br/>
           {/* <input type="text" name="venue" ref="venue" placeholder="Venue Name" value={currentOrder && currentOrder.venue} /><br/> */}
-          <select id="mySelect" onChange={this.updateTheVenue.bind(this)} >
+          <select name="venue" id="mySelect" onChange={this.updateTheVenue.bind(this)} >
                     <option  key="selected" selected="">Please Select Facility</option>
                     {myVenues.map((v, index)=>{
                         if (currentOrder.venue === v.name){ 
-                            return <option name="venue" id={v.name} keyID={index}  selected >{v.name}</option>
+                            return <option id={v.name} keyID={index} value={v.name} selected >{v.name}</option>
                         }else{
-                            return <option name="venue" id={v.name} keyID={index}  >{v.name}</option>
+                            return <option id={v.name} keyID={index} value={v.name}>{v.name}</option>
                         } 
                         
                     })}

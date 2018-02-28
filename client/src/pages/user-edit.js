@@ -1,16 +1,9 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom'
-import axios from 'axios'
+import clientAuth from './clientAuth'
 
-
-
-
-
-
-
-
-class User extends React.Component {
+class UserEdit extends React.Component {
 
     constructor(props){
         super(props)
@@ -50,13 +43,10 @@ class User extends React.Component {
         updateUser(evt){
             evt.preventDefault()
             console.log('update button fired', this.state.user)
-    
-                axios({method: 'patch', url: `/api/users/${this.props.user._id}`, data: this.state.user 
-            }).then((res) => {
-                    this.props.history.push(`/api/user/${this.props.user._id}`)
-                    this.props.updateDOM()
-                    
-                }) //end AXIOS
+            clientAuth.updateUser(this.props.user._id, this.state.user).then((updatedUser) => {
+                this.props.history.push(`/api/user/${this.props.user._id}`)
+                this.props.onUserUpdate(updatedUser)
+            }) //end AXIOS
     
                 
         }//END Update User
@@ -69,7 +59,7 @@ class User extends React.Component {
 
 
         return (
-          <div className="User">
+          <div className="UserEdit">
   
             
             <h1>The USER EDIT Page</h1>
@@ -110,5 +100,5 @@ class User extends React.Component {
      } //end CLASS
     
   
-    export default User;
+    export default UserEdit;
     
