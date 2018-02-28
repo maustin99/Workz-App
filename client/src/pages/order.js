@@ -132,59 +132,63 @@ class Order extends React.Component {
       return (
         <div className="Order">
 
-          
-          <h1>The Show Order Page</h1>
-  
-           <h1>{this.state.order.problem}</h1>
-           <h2>Order #: {this.state.order.order_id}</h2>
-           <h2>Venue: {this.state.order.venue}</h2>
-           <h2>Location: {this.state.order.location}</h2>
-           <h2>Level:{this.state.order.level}</h2>
-           <h2>Section:{this.state.order.section}</h2>
-           <h2>Aisle:{this.state.order.aisle}</h2>
-           <h2>Row:{this.state.order.row}</h2>
-           <h2>Seat #:{this.state.order.seat}</h2>
+                <div id="orderContainer">
+                      {/* <h1>The Show Order Page</h1> */}
+                      <h1>{this.state.order.problem}</h1>
+                      <div id="smallContainer">
+                      
+                      
+                       <span><span id="orderTag">Order #:</span>{this.state.order.order_id}</span><br/><br/>
+                      <span><span id="orderTag">Venue:</span>{this.state.order.venue}</span><br/><br/>
+                      <span><span id="orderTag">Location: </span>{this.state.order.location}</span><br/><br/>
+                      <span><span id="orderTag">Level:</span>{this.state.order.level}</span><br/><br/>
+                      <span><span id="orderTag">Section:</span>{this.state.order.section}</span><br/><br/>
+                      <span><span id="orderTag">Aisle:</span>{this.state.order.aisle}</span><br/><br/>
+                      <span><span id="orderTag">Row:</span>{this.state.order.row}</span><br/><br/>
+                      <span><span id="orderTag">Seat #:</span>{this.state.order.seat}</span><br/><br/>
+                      </div>
+                        <br/>
+                        <br/>
+                  </div> {/* END order container */}
 
-            <br/>
-            <br/>
+                        <div id="imageWrapper">
+                            <div id="facilityImage">
+                                  <img id="image" onClick={this.handleImageClick.bind(this)} src={myVenueURL && myVenueURL} /> <br/> 
+                            </div>  
+                                  <div id="topImage"  style={this.state.divStyle}>
+                                  <img src={mapPin}  />
+                              </div>
+                          </div>
 
-            <div id="imageWrapper">
-                <div id="facilityImage">
-                      <img id="image" onClick={this.handleImageClick.bind(this)} src={myVenueURL && myVenueURL} /> <br/> 
-                </div>  
-                      <div id="topImage"  style={this.state.divStyle}>
-                      <img src={mapPin}  />
-                  </div>
-              </div>
+                          <br/>
+                     
+                        {/* <Link to={`/api/orders/`}>See All Orders</Link> */}
+                      <br/>
+                      <br/>
+                      <Link to={`/api/orders-search/`}>Return to Orders Search Page</Link>
+                      <br/>
+                      <br/> 
+                      <Link to={`/api/orders-edit/${this.state.order._id}`}>Edit the Order</Link> 
+                      <br/>
+                      <br/>
+                      <Link to={`/api/orders/`} onClick={this.deleteThisOrder.bind(this)}>Delete the Order</Link> 
+                      <br/>
+                      <br/>
+                      <br/>
 
-              <br/>
-              <br/>
-            <br/>
-            <Link to={`/api/orders/`}>See All Orders</Link>
-           <br/>
-           <br/>
-          <Link to={`/api/orders-search/`}>Return to Orders Search Page</Link>
-          <br/>
-           <br/> 
-          <Link to={`/api/orders-edit/${this.state.order._id}`}>Edit the Order</Link> 
-           <br/>
-           <br/>
-           <Link to={`/api/orders/`} onClick={this.deleteThisOrder.bind(this)}>Delete the Order</Link> 
-          <br/>
+                      {/* REDIRECT TRIGGER */}
+                    {this.state.fireRedirect && ( 
+                            <Redirect to={ '/api/orders/' }  />
+                    )}
 
-           {/* REDIRECT TRIGGER */}
-        {this.state.fireRedirect && ( 
-                <Redirect to={ '/api/orders/' }  />
-        )}
-
-           
-<br/>
-        
-        
-        
-
+                      
+                      <br/>
+                    
+                    
+                    
+               
             
-        </div>
+        </div> //END Order CLASS
       ) //end return
     
 

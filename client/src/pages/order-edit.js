@@ -94,40 +94,58 @@ class OrderEdit extends React.Component {
 
       return (
         <div className="OrderEdit">
-          <h1>The EDIT Order Page</h1>
+          <h1>EDIT an ORDRZ</h1>
 
             {console.log('currentOrder (render()): ', currentOrder)}
-  
-          <form onChange={this.handleFormChange.bind(this)} onSubmit={this.updateOrder.bind(this)}>
-          <input type="text" name="problem" ref="problem" placeholder="Order Problem" value={currentOrder && currentOrder.problem} /><br/>
-          <input type="text" name="order_id" ref="order_id" placeholder="Order ID Number" value={currentOrder && currentOrder.order_id} /><br/>
-          {/* <input type="text" name="venue" ref="venue" placeholder="Venue Name" value={currentOrder && currentOrder.venue} /><br/> */}
-          <select name="venue" id="mySelect" onChange={this.updateTheVenue.bind(this)} >
-                    <option  key="selected" selected="">Please Select Facility</option>
-                    {myVenues.map((v, index)=>{
-                        if (currentOrder.venue === v.name){ 
-                            return <option id={v.name} keyID={index} value={v.name} selected >{v.name}</option>
-                        }else{
-                            return <option id={v.name} keyID={index} value={v.name}>{v.name}</option>
-                        } 
-                        
-                    })}
-            </select>
-            <br/>
-          <input type="text" name="location" ref="location" placeholder="Problem Location" value={currentOrder && currentOrder.location} /><br/>
-          <input type="text" name="level" ref="level" placeholder="Level" value={currentOrder && currentOrder.level} /><br/>
-          <input type="text" name="section" ref="section" placeholder="Section" value={currentOrder && currentOrder.section} /><br/>
-          <input type="text" name="aisle" ref="aisle" placeholder="Aisle" value={currentOrder && currentOrder.aisle} /><br/>
-          <input type="text" name="row" ref="row" placeholder="Row" value={currentOrder && currentOrder.row} /><br/>
-          <input type="text" name="seat" ref="seat" placeholder="Seat" value={currentOrder && currentOrder.seat} /><br/>
-          <input type="text" name="photo" ref="photo" placeholder="Attach a Photo" value={currentOrder && currentOrder.photo} /><br/>
-            <button>Update Order</button>
-        </form>
-
-       
+            <div id="orderEditSmallContainer">
+                <div id="OrderEdit-LeftColumn">
+                         <span id="orderEditTag">Problem:</span>
+                         <span id="orderEditTag">Order ID #:</span>
+                         <span id="orderEditTag">Venue:</span>
+                         <span id="orderEditTag">Location:</span>
+                         <span id="orderEditTag">Level:</span>
+                         <span id="orderEditTag">Section:</span>
+                         <span id="orderEditTag">Aisle:</span>
+                         <span id="orderEditTag">Row:</span>
+                         <span id="orderEditTag">Seat:</span>
+                         <span id="orderEditTag">Attach a Photo:</span>
+                </div>{/* END LEFT COLUMN*/}
+                <div id="OrderEdit-RightColumn">
+                    
+                    <form onChange={this.handleFormChange.bind(this)} onSubmit={this.updateOrder.bind(this)}>
+                    <input type="text" name="problem" ref="problem" placeholder="Order Problem" value={currentOrder && currentOrder.problem} /><br/>
+                    <input type="text" name="order_id" ref="order_id" placeholder="Order ID Number" value={currentOrder && currentOrder.order_id} /><br/>
+                    {/* <input type="text" name="venue" ref="venue" placeholder="Venue Name" value={currentOrder && currentOrder.venue} /><br/> */}
+                    <br/>
+                    
+                    <br/>
+                    <select name="venue" id="mySelect" onChange={this.updateTheVenue.bind(this)} >
+                                <option  key="selected" selected="">Please Select Facility</option>
+                                {myVenues.map((v, index)=>{
+                                    if (currentOrder.venue === v.name){ 
+                                        return <option id={v.name} keyID={index} value={v.name} selected >{v.name}</option>
+                                    }else{
+                                        return <option id={v.name} keyID={index} value={v.name}>{v.name}</option>
+                                    } 
+                                    
+                                })}
+                        </select>
+                        <br/>
+                        <input type="text" name="location" ref="location" placeholder="Problem Location" value={currentOrder && currentOrder.location} /><br/>
+                        <input type="text" name="level" ref="level" placeholder="Level" value={currentOrder && currentOrder.level} /><br/>
+                        <input type="text" name="section" ref="section" placeholder="Section" value={currentOrder && currentOrder.section} /><br/>
+                        <input type="text" name="aisle" ref="aisle" placeholder="Aisle" value={currentOrder && currentOrder.aisle} /><br/>
+                        <input type="text" name="row" ref="row" placeholder="Row" value={currentOrder && currentOrder.row} /><br/>
+                        <input type="text" name="seat" ref="seat" placeholder="Seat" value={currentOrder && currentOrder.seat} /><br/>
+                        <input type="text" name="photo" ref="photo" placeholder="Attach a Photo" value={currentOrder && currentOrder.photo} /><br/>
+                        <button>Update Order</button>
+                    </form>
+                    </div> {/* END RIGHT COLUMN*/}
+                    
+                </div> {/* END Small Container */}
         <br/>
         <br/>
-        <Link to={`/api/orders/${currentOrder._id}`}>Return to the Order</Link>
+        <Link to={`/api/orders/${currentOrder._id}`}><p>Return to the Order</p></Link>
   
         </div>
       );

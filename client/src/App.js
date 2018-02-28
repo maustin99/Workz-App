@@ -63,7 +63,7 @@ logOut() {
   this.setState({ currentUser: null })
 }
 
-updateCurrentUser(updatedUser) {
+updateCurrentUser(updatedUser) {  //sets current user ; user brought back from user-edit
   this.setState({
     currentUser: updatedUser
   })

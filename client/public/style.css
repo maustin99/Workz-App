@@ -30,7 +30,7 @@
 body{
     background-image: url("./images/ORDRZ_Splash.jpg");
     background-repeat: no-repeat;
-   
+    background-attachment: fixed;
     background-position: top; 
     background-size: cover;
 
@@ -39,6 +39,7 @@ body{
 
 a:link {
     color: white;
+    text-decoration: none;
 }
 
 /* visited link */
@@ -82,7 +83,7 @@ a:active {
     margin-right: auto;
 }
 
-#NavMenu, p{
+#NavMenu p{
     
     margin:  10px 0 0 50px;
     padding: 0px;
@@ -153,5 +154,310 @@ a:active {
 
 }
 
-
+/* ------------------------------------ */
 /* ----==== ORDER SEARCH PAGE ====----  */
+
+#order_search_title{
+
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+
+h3{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+}
+
+#OrderSearch , select{
+    font-size: 12pt;
+}
+
+#OrderSearch , input{
+    margin-top: 15pt;
+    
+    font-size: 18pt;
+}
+
+.order-list{
+    text-align: center;
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      )
+    
+}
+#orderMapDiv{
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background-color: rgba(256 , 256, 256, 0.15);
+    border: 2px solid cyan;
+}
+
+/* ----==== ORDER SHOW PAGE ====----  */
+
+.Order h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+
+#orderContainer{
+    width:75%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 0px solid blue;
+
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      )
+    
+}
+#smallContainer{
+   
+    border: 0px solid green;
+    width:30%;  
+    margin-left: auto;
+    margin-right: auto; 
+   padding-top:15px;
+   white-space: nowrap;
+
+    
+}
+#orderTag{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 14pt;
+    color: #ffbd44;
+    border: 0px solid red;
+    margin: 0 15px 0 0 ;
+    padding: 0px;
+   
+}
+/* ----==== ORDER EDIT PAGE ====----  */
+.OrderEdit{
+    border: 0px solid red;
+}
+.OrderEdit h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+
+#orderEditSmallContainer{
+   width: 31%;
+   height:600px;
+    border: 1px solid cyan;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      )
+
+}
+#OrderEdit-LeftColumn{
+   
+    width: 112px;
+    height:600px;
+    border: 0px solid yellow;
+    float: left;
+}
+#orderEditTag{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 14pt;
+    color: #ffbd44;
+    border: 0px solid purple;
+    margin: 0 0 0 0 ;
+    padding: 25px 0 0 0;
+
+    width:110px;
+    display: block;
+    text-align: right;
+}
+.OrderEdit select{
+    
+    border: 0px solid orange;
+    margin:0px;
+}
+#OrderEdit-RightColumn{
+    float: left;
+    width: 275px;
+    height:600px;
+    margin-left: 15px;
+    border: 0px solid cyan;
+}
+#orderEditSmallContainer input{
+   margin-top:16px;
+}
+.OrderEdit button{
+    font-size: 12pt;
+    margin-top: 15px;
+}
+.OrderEdit button:hover {
+    background: #ffbd44;
+}
+.OrderEdit p{
+    border: 0px solid red;
+    width:100%;
+    height: 25px;
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+    margin:0px 0 0px 0;
+    padding:0px;
+    
+} 
+/* ----==== ORDER CREATE PAGE ====----  */
+.OrderCreate h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+.OrderCreate select{
+    
+    border: 0px solid orange;
+    margin:25px 0 10px 0;
+}
+.OrderCreate button{
+    font-size: 12pt;
+    margin-top: 15px;
+}
+.OrderCreate button:hover {
+    background: #ffbd44;
+}
+.OrderCreate p{
+    border: 0px solid red;
+    width:100%;
+    height: 25px;
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+    margin:0px 0 0px 0;
+    padding:0px;
+    
+} 
+
+/* ------------------------------------ */
+/* ----==== END ORDERS PAGES ====----  */
+/* ------------------------------------ */
+/* ------------------------------------ */
+
+
+/* ------------------------------------ */
+/* ----==== VENUES PAGE ====----  */
+
+.Venues h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+
+.Venues p{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+}
+#venuesSmallContainer{
+
+    border: 1px solid cyan;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      )
+}
+/* ------- VENUES CREATE -------- */
+#venuesCreateSmallContainer{
+    border: 1px solid cyan;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      )
+}
+.VenueCreate button{
+    font-size: 12pt;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.VenueCreate button:hover{
+    background: #ffbd44;
+}
+.VenueCreate p{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+}
+
+/* ------- VENUES SHOW -------- */
+.Venue h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+.Venue p {
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+    margin:0 0 15px 0;
+    padding:0px;
+}
+.Venue #map {
+    margin-left: auto;
+    margin-right:auto;
+}
+
+/* ------------------------------------ */
+/* ------------------------------------ */
+/*-----------USER SHOW -------------*/
+.User h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+#userSmallContainer{
+    border: 1px solid cyan;
+    width:50%;
+    margin-left: auto;
+    margin-right: auto;
+
+    background: linear-gradient(
+        rgba(0, 0, 0, 0.7), 
+        rgba(0, 0, 0, 0.7)
+      )
+}
+#userSmallContainer p{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 15pt;
+    margin:0 0 15px 0;
+    padding:0px;
+} 
+/* ---------- USER EDIT ------------*/
+.UserEdit h1{
+    font-family: 'robotolight', 'arial' ;
+    text-transform: uppercase;
+    font-size: 20pt;
+}
+.UserEdit button{
+    font-size: 12pt;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.UserEdit button:hover{
+    background: #ffbd44;
+}

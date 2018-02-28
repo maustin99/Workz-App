@@ -14,7 +14,8 @@ const NavBar = (props) => {
 					{props.currentUser
 						? (
 							<span>
-								<Link to="/api/orders-search"><p>Search Orders</p></Link>
+								<Link to="/api/orders-search"><p>Search Ordrz</p></Link>
+								<Link to="/api/orders-new/"><p>Create an Ordrz</p></Link>
 								<Link to="/api/venues"><p>Venues</p></Link>
 								<Link to={`/api/user/${props.currentUser._id}`} ><p>User Profile</p></Link>
 								<Link to="/logout"><p>Log Out</p></Link>

@@ -41,6 +41,8 @@ class VenueEdit extends React.Component {
                 city: this.refs.city.value,
                 state: this.refs.state.value,
                 country: this.refs.country.value,
+                vlocationX: this.refs.vlocationX.value,
+                vlocationY: this.refs.vlocationY.value,
                 phoneNumber: this.refs.phoneNumber.value,
                 pictureURL: this.refs.pictureURL.value,
                 pictureLOGO: this.refs.pictureLOGO.value,
@@ -81,6 +83,8 @@ class VenueEdit extends React.Component {
             <input type="text" ref="city" placeholder="City"  defaultValue={currentVenue && currentVenue.city}  /><br/>
             <input type="text" ref="state" placeholder="State"  defaultValue={currentVenue && currentVenue.state}  /><br/>
             <input type="text" ref="country" placeholder="Country"  defaultValue={currentVenue && currentVenue.country} /><br/>
+            <input type="text" ref="vlocationX" placeholder="Map Location - Latitude" defaultValue={currentVenue && currentVenue.vlocationX} /><br/>
+            <input type="text" ref="vlocationY" placeholder="Map Location - Longitude" defaultValue={currentVenue && currentVenue.vlocationY} /><br/>
             <input type="text" ref="phoneNumber" placeholder="Main Phone Number"  defaultValue={currentVenue && currentVenue.phoneNumber} /><br/>
             <input type="text" ref="pictureURL" placeholder="Venure Picture URL" defaultValue={currentVenue && currentVenue.pictureURL}  /><br/>
             <input type="text" ref="pictureLOGO" placeholder="Venue Logo URL"  defaultValue={currentVenue && currentVenue.pictureLOGO} /><br/>

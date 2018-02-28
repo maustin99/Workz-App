@@ -62,8 +62,9 @@ class OrderSearch extends React.Component {
       
       return (
         <div className="OrderSearch">
-          <h1>The Order Search Page</h1>
-     
+          <h1 id="order_search_title">SEARCH ORDERS</h1>
+          <h3>Search orders by venue and problem</h3>
+
             <select id="mySelect" onChange={this.changeFacility.bind(this)}>
                     <option key="selected" selected="">Please Select Facility</option>
                     <option key="all">All Arenas</option>
@@ -78,20 +79,20 @@ class OrderSearch extends React.Component {
           <input  onChange={this.updateFilter.bind(this)} ref="searchInput" className="input is-large" type="text" placeholder="Filter All Orders" />
             <br/>
           
-          <ul className="order-list">
+          <div className="order-list">
         
                 {  allOrders.map((b, index)=>{       
                 return (
-                    <div>
-                    <h3>{b.venue}</h3>
-                    <h3 key={b._id}>
-                    <Link to={`/api/orders/${b._id}`}>{b.problem}</Link>
-                    </h3>
-                    <h3>{b.order_id}</h3>
+                    <div id="orderMapDiv" >
+                        <h3>{b.venue}</h3>
+                        <h3 key={b._id}>
+                        <Link to={`/api/orders/${b._id}`}>{b.problem}</Link>
+                        </h3>
+                        <h3>{b.order_id}</h3>
                     </div>
                 )
                     }) /* close MAP*/ }    
-            </ul>
+            </div>
      
      
      

@@ -19,17 +19,20 @@ class Venues extends React.Component {
 
       return (
         <div className="Venues">
-          <h1>The Venues Page</h1>
+          <h1>Participating Venues</h1>
   
-  
-      {myVenues.map((m, index)=>{
+            <div id="venuesSmallContainer">
+              {myVenues.map((m, index)=>{
 
-          return (
-            <Link to={`/api/venues/${m._id}`}><p key={m._id}  >{m.name}</p></Link>
-          )
-      })}
-  
-        </div>
+                  return (
+                    <Link to={`/api/venues/${m._id}`}><p key={m._id}  >{m.name}</p></Link>
+                  )
+              })}
+              <br/>
+                      <br/>
+                      <Link to={`/api/venues-new/`} ><p>Add a Venue</p></Link> 
+            </div>
+        </div> // END Class DIV
       );
     }
   }
