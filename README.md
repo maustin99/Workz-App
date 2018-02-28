@@ -21,8 +21,8 @@ As a User I want to be notified when the Work Order is complete<br/>
 <img src="screen_shot_2.png" width=50%/><img src="screen_shot_1.png" width=50%/>
 
 <h2>Models</h2>
-<img src="IMG_4572.jpg" width=50%/><img src="IMG_4573.jpg" width=50%/>
-<img src="IMG_4574.jpg" width=50%/><img src="IMG_4575.jpg" width=50%/>
+<img src="IMG_4572.jpg" width=40%/><img src="IMG_4573.jpg" width=40%/>
+<img src="IMG_4574.jpg" width=40%/><img src="IMG_4575.jpg" width=40%/>
 
 
 <h2>MVP</h2>
