@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-/*global google*/
+import GoogleMapReact from 'google-map-react'
 
 const ARC_DE_TRIOMPHE_POSITION = {
   lat: 48.873947,
@@ -36,9 +36,12 @@ class Venue extends React.Component {
 
 
     state = {
-        venue: {},
+        venue: null,
         fireRedirect: false,
-        MY_MAP: {}
+        MY_MAP: {
+          lat:  34.0430245,
+          lng: -118.2674181
+        }
         
     }
 
@@ -52,9 +55,20 @@ class Venue extends React.Component {
 
         axios({method: 'get', url: `/api/venues/${this.props.venueId}`})
             .then((res) => { 
+              if (!res.data.vlocationX ){
+                // dataX = 34.0430245
+                // dataY = -118.2674181
+              }else{
                dataX = parseFloat(res.data.vlocationX)
                dataY = parseFloat(res.data.vlocationY)
+               //document.getElementById('MapWarning').style.visibility = "hidden";
+              }
 
+               // this.map = new google.maps.Map(this.refs.map, {
+               //   center: this.state.MY_MAP,
+               //   zoom: 18
+               // });
+               
               this.setState({
               venue: res.data,
               MY_MAP: {
@@ -67,10 +81,6 @@ class Venue extends React.Component {
                 }) //end AXIOS
 
               
-              this.map = new google.maps.Map(this.refs.map, {
-                center: this.state.MY_MAP,
-                zoom: 18
-              });
 
            
 
@@ -121,7 +131,7 @@ class Venue extends React.Component {
     console.log('Venue - Props:', this.props)
 
 
-
+      if(!this.state.venue) return <h1>Loading...</h1>
       return (
         <div className="Venue" >
            
@@ -132,6 +142,8 @@ class Venue extends React.Component {
                 <img height="100px" src={this.state.venue.pictureLOGO} />
                 <h3>{this.state.venue.address}</h3>
                 <h3>{this.state.venue.city}</h3>
+                <h3>{this.state.venue.state} {this.state.venue.zip}</h3>
+                <h3>{this.state.venue.phoneNumber}</h3>
                 <br/>
                 <br/>
         
@@ -144,8 +156,19 @@ class Venue extends React.Component {
 
                   {/* <h3>My Google Maps Demo</h3> */}
                   {/* <button onClick={this.panToArcDeTriomphe.bind(this)} >Go to Arc De Triomphe</button>  */}
-                  
-                  <div id="map" ref="map" style={mapStyle}>I should be a map!</div>
+                  {/* <div className="MapWarning"><h3>Map Not Available</h3></div> */}
+                  <div className="Map">
+                    <GoogleMapReact
+                      bootstrapURLKeys={{key: "AIzaSyCbFUUS7wM3ls1udM5UwzZWBTL1NI0NT0M"}}
+                      defaultCenter={this.state.MY_MAP}
+                      center={this.state.MY_MAP}
+                      defaultZoom={18}
+                     
+                      
+                    />
+
+                  </div>
+                  {/* <div id="map" ref="map" style={mapStyle}>I should be a map!</div> */}
                   
                   <br/>
                   <br/>

@@ -30,6 +30,7 @@ class VenueCreate extends React.Component {
                 address: this.refs.address.value,
                 city: this.refs.city.value,
                 state: this.refs.state.value,
+                zip: this.refs.state.value,
                 country: this.refs.country.value,
                 vlocationX: this.refs.vlocationX.value,
                 vlocationY: this.refs.vlocationY.value,
@@ -69,6 +70,7 @@ class VenueCreate extends React.Component {
                     <input type="text" ref="address" placeholder="Address" /><br/>
                     <input type="text" ref="city" placeholder="City" /><br/>
                     <input type="text" ref="state" placeholder="State" /><br/>
+                    <input type="text" ref="zip" placeholder="Zip Code" /><br/>
                     <input type="text" ref="country" placeholder="Country" /><br/>
                     <input type="text" ref="vlocationX" placeholder="Map Location - Latitude" /><br/>
                     <input type="text" ref="vlocationY" placeholder="Map Location - Longitude" /><br/>
